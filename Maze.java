@@ -61,7 +61,7 @@ public class Maze
 		
 		boolean addB = true;
 		
-		while(newB.checkIfInvalid())
+		while(newB.checkIfInvalid(dir))
 		{
 			if(Main.keysPressed.contains(82))
 			{

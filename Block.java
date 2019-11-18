@@ -54,7 +54,7 @@ public class Block
 		return xInvalid || yInvalid; 
 	}
 	
-	public boolean isThereBlock()
+	public boolean isThereBlock(int dir)
 	{
 		int invalidPointx1 = _x + _size;
 		int invalidPointy1 = _y + _size;
@@ -68,7 +68,7 @@ public class Block
 		int invalidPointx4 = _x - _size;
 		int invalidPointy4 = _y - _size;
 		
-		/*int invalidPointx5 = _x + _size;
+		int invalidPointx5 = _x + _size;
 		int invalidPointy5 = _y + 0;
 		
 		int invalidPointx6 = _x + 0;
@@ -78,7 +78,7 @@ public class Block
 		int invalidPointy7 = _y + _size;
 		
 		int invalidPointx8 = _x - _size;
-		int invalidPointy8 = _y - 0;*/
+		int invalidPointy8 = _y - 0;
 		
 		int numInvalidBlocks = 0;
 		
@@ -101,7 +101,7 @@ public class Block
 				numInvalidBlocks += 1;
 			}
 			
-			/*if(b._x == invalidPointx5 && b._y == invalidPointy5)
+			if(b._x == invalidPointx5 && b._y == invalidPointy5)
 			{
 				numInvalidBlocks += 1;
 			}
@@ -116,7 +116,28 @@ public class Block
 			if(b._x == invalidPointx8 && b._y == invalidPointy8)
 			{
 				numInvalidBlocks += 1;
-			}*/
+			}
+			
+			if(dir == 0)
+			{
+				invalidPointx6 = -1;
+				invalidPointy6 = -1;
+			}
+			else if(dir == 1)
+			{
+				invalidPointx7 = -1;
+				invalidPointy7 = -1;
+			}
+			else if(dir == 2)
+			{
+				invalidPointx8 = -1;
+				invalidPointy8 = -1;
+			}
+			else
+			{
+				invalidPointx5 = -1;
+				invalidPointy5 = -1;
+			}
 			
 			if(b._x == this._x && b._y == this._y)
 			{
@@ -163,9 +184,9 @@ public class Block
 		return hasHit;
 	}
 	
-	public boolean checkIfInvalid()
+	public boolean checkIfInvalid(int dir)
 	{
-		return !onScreen() || isThereBlock();
+		return !onScreen() || isThereBlock(dir);
 		
 		/*int bottomY = _y + _size;
 		boolean metBottom = bottomY >= Main.getHeight() ? true : false;
